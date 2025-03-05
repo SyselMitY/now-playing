@@ -3,10 +3,17 @@ plugins {
     id("net.neoforged.moddev")
 }
 
+repositories {
+    mavenCentral()
+}
+
 dependencies {
     compileOnly("org.spongepowered:mixin:${mixin_version}")
     compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:${mixinextras_version}"))
-    
+
+
+    implementation("de.u-mass:lastfm-java:0.1.2")
+
     // Cloth Config API
     api("me.shedaniel.cloth:cloth-config-neoforge:${clothconfig_version}")
 }

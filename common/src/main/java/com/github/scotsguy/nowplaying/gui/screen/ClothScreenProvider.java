@@ -59,7 +59,7 @@ public class ClothScreenProvider {
         modSettings.addEntry(eb.startEnumSelector(
                 localized("option", "musicStyle"),
                         Config.Options.Style.class, options.musicStyle)
-                .setEnumNameProvider(Config.Options.Style::name)
+                .setEnumNameProvider(style -> Config.Options.Style.name(((Config.Options.Style) style)))
                 .setDefaultValue(Config.Options.musicStyleDefault)
                 .setSaveConsumer(val -> options.musicStyle = val)
                 .build());
@@ -67,7 +67,7 @@ public class ClothScreenProvider {
         modSettings.addEntry(eb.startEnumSelector(
                         localized("option", "jukeboxStyle"),
                         Config.Options.Style.class, options.jukeboxStyle)
-                .setEnumNameProvider(Config.Options.Style::name)
+                .setEnumNameProvider(style -> Config.Options.Style.name(((Config.Options.Style) style)))
                 .setDefaultValue(Config.Options.jukeboxStyleDefault)
                 .setSaveConsumer(val -> options.jukeboxStyle = val)
                 .build());
@@ -134,6 +134,42 @@ public class ClothScreenProvider {
                 .setSaveConsumer(val -> options.narrate = val)
                 .build());
 
+        modSettings.addEntry(eb.startBooleanToggle(
+                        localized("option", "lastfmEnabled"), options.lastfmEnabled)
+                .setTooltip(localized("option", "lastfmEnabled.tooltip"))
+                .setDefaultValue(Config.Options.lastfmEnabledDefault)
+                .setSaveConsumer(val -> options.lastfmEnabled = val)
+                .build(
+                ));
+
+        modSettings.addEntry(eb.startStrField(
+                localized("option", "lastfmUser"), options.lastfmUser)
+                .setTooltip(localized("option", "lastfmUser.tooltip"))
+                .setDefaultValue(Config.Options.lastfmUserDefault)
+                .setSaveConsumer(val -> options.lastfmUser = val)
+                .build());
+
+        //TODO hide the field content somehow
+        modSettings.addEntry(eb.startStrField(
+                localized("option", "lastfmPassword"), options.lastfmPassword)
+                .setTooltip(localized("option", "lastfmPassword.tooltip"))
+                .setDefaultValue(Config.Options.lastfmPasswordDefault)
+                .setSaveConsumer(val -> options.lastfmPassword = val)
+                .build());
+
+        modSettings.addEntry(eb.startStrField(
+                localized("option", "lastfmApiKey"), options.lastfmApiKey)
+                .setTooltip(localized("option", "lastfmApiKey.tooltip"))
+                .setDefaultValue(Config.Options.lastfmApiKeyDefault)
+                .setSaveConsumer(val -> options.lastfmApiKey = val)
+                .build());
+
+        modSettings.addEntry(eb.startStrField(
+                localized("option", "lastfmSharedSecret"), options.lastfmSharedSecret)
+                .setTooltip(localized("option", "lastfmSharedSecret.tooltip"))
+                .setDefaultValue(Config.Options.lastfmSharedSecretDefault)
+                .setSaveConsumer(val -> options.lastfmSharedSecret = val)
+                .build());
         return builder.build();
     }
 }

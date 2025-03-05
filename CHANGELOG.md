@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.6.0
+
+- Added LastFM scrobbling support
+
 ## 1.5.13
 
 - Updated Russian translation (rfin0)

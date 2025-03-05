@@ -33,6 +33,17 @@
   "option.now-playing.narrate": "Narrate pop-up",
   "option.now-playing.narrate.tooltip": "When the narrator is enabled, read out 'Now Playing' popups",
 
+  "option.now-playing.lastfmEnabled": "Enable Last.fm scrobbling",
+  "option.now-playing.lastfmEnabled.tooltip": "Enable scrobbling to Last.fm. Requires username and password",
+  "option.now-playing.lastfmUser": "Last.fm username",
+  "option.now-playing.lastfmUser.tooltip": "Your Last.fm username",
+  "option.now-playing.lastfmPassword": "Last.fm password",
+  "option.now-playing.lastfmPassword.tooltip": "Your Last.fm password",
+  "option.now-playing.lastfmApiKey": "Last.fm API key",
+  "option.now-playing.lastfmApiKey.tooltip": "Your Last.fm API key",
+  "option.now-playing.lastfmSharedSecret": "Last.fm shared secret",
+  "option.now-playing.lastfmSharedSecret.tooltip": "Your Last.fm shared secret",
+
   "option.now-playing.style.hotbar": "Hotbar",
   "option.now-playing.style.toast": "Toast",
   "option.now-playing.style.disabled": "Disabled",

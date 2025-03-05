@@ -30,6 +30,9 @@ import com.github.scotsguy.nowplaying.util.Localization;
 import com.github.scotsguy.nowplaying.util.ModLogger;
 import com.github.scotsguy.nowplaying.sound.SpriteProvider;
 import com.mojang.blaze3d.platform.InputConstants;
+import de.umass.lastfm.Authenticator;
+import de.umass.lastfm.Session;
+import de.umass.lastfm.Track;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
@@ -56,6 +59,7 @@ public class NowPlaying {
     public static final KeyMapping NEXT_KEY = new KeyMapping(
             translationKey("key", "group.next"), InputConstants.Type.KEYSYM,
             InputConstants.UNKNOWN.getValue(), translationKey("key", "group"));
+
 
     public static ResourceLocation lastMusic;
 
@@ -138,5 +142,24 @@ public class NowPlaying {
             }
         }
         return Component.translatable(key);
+    }
+
+    public static void scrobble() {
+        LOG.info("Scrobble gaming");
+        LOG.info("Last music: " + lastMusic + " Lastfm enabled: " + options().lastfmEnabled);
+        if (!options().lastfmEnabled || lastMusic == null) return;
+        LOG.info("gmaming gaming");
+        String fullString = getTranslatedTitle(lastMusic.toString()).getString();
+        String artist = fullString.split(" - ")[0];
+        String title = fullString.split(" - ")[1];
+        LOG.info("title go");
+
+        try {
+            Session session = Authenticator.getMobileSession(options().lastfmUser, options().lastfmPassword, options().lastfmApiKey, options().lastfmSharedSecret);
+            var timestamp = (int) (System.currentTimeMillis() / 1000);
+            Track.scrobble(artist, title, timestamp, session);
+        } catch (Exception e) {
+            LOG.error("Failed to scrobble to Last.fm: " + e.getMessage());
+        }
     }
 }

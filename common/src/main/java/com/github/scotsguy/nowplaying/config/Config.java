@@ -86,6 +86,21 @@ public class Config {
         public static final boolean narrateDefault = true;
         public boolean narrate = narrateDefault;
 
+        public static final boolean lastfmEnabledDefault = false;
+        public boolean lastfmEnabled = lastfmEnabledDefault;
+
+        public static final String lastfmUserDefault = "";
+        public String lastfmUser = lastfmUserDefault;
+
+        public static final String lastfmPasswordDefault = "";
+        public String lastfmPassword = lastfmPasswordDefault;
+
+        public static final String lastfmApiKeyDefault = "";
+        public String lastfmApiKey = lastfmApiKeyDefault;
+
+        public static final String lastfmSharedSecretDefault = "";
+        public String lastfmSharedSecret = lastfmSharedSecretDefault;
+
         public enum Style {
             Toast,
             Hotbar,

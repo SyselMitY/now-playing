@@ -40,7 +40,7 @@ public class NowPlayingListener implements SoundEventListener {
         if (soundInstance.getSource() == SoundSource.MUSIC) {
             ResourceLocation location = soundInstance.getSound().getLocation();
             NowPlaying.lastMusic = location;
-
+            new Thread(NowPlaying::scrobble).start();
             if (!options().onlyKeybind
                     && Minecraft.getInstance().options.getSoundSourceVolume(SoundSource.MASTER) != 0f) {
                 NowPlaying.displayMusic(location);
